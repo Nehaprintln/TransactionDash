@@ -10,7 +10,11 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+app.use( cors({
+    origin: ["https://transaction-dash-front.vercel.app/"], // Your frontend URL
+    methods: ["GET"],
+    // credentials: true // Enable this if you need cookies or authentication
+  }));
 app.use(bodyParser.json());
 console.log("Seed data server..")
 app.get("/api/initialize", async (req, res) => {
