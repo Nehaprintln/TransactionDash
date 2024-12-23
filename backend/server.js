@@ -13,7 +13,7 @@ connectDB();
 app.use( cors({
     origin: ["https://transaction-dash-front.vercel.app/"], // Your frontend URL
     methods: ["GET"],
-    // credentials: true // Enable this if you need cookies or authentication
+    credentials: true // Enable this if you need cookies or authentication
   }));
 app.use(bodyParser.json());
 console.log("Seed data server..")
