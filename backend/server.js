@@ -9,12 +9,17 @@ const trRouters = require("./routes/transactionRoutes");
 const app = express();
 
 connectDB();
+// Allow requests from specific origin
+app.use(
+  cors({
+    origin: "https://transaction-dash-front.vercel.app", // Replace with your frontend URL
+    methods: ["GET", "POST"], // Allowed HTTP methods
+    credentials: true, // If using cookies or authorization headers
+  })
+);
 
-app.use( cors({
-    origin: ["https://transaction-dash-front.vercel.app/"], // Your frontend URL
-    methods: ["GET"],
-    credentials: true // Enable this if you need cookies or authentication
-  }));
+// Or allow all origins (not recommended for production)
+app.use(cors());
 app.use(bodyParser.json());
 console.log("Seed data server..")
 app.get("/api/initialize", async (req, res) => {
