@@ -14,10 +14,9 @@ connectDB();
 // Allow requests from specific origin
 app.use(
   cors({
-    origin: "https://transaction-dash-front.vercel.app", // Replace with your frontend URL
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"], // Allowed HTTP methods
-    
+    origin: "*", //  frontend URL
+    methods: ["GET", "PATCH"],
+    // credentials: true // Enable this if you need cookies or authentication
   })
 );
 
