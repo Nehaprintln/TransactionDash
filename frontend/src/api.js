@@ -9,7 +9,6 @@ export const getTransactions = (month, search, page, perPage) => {
 
   return fetch(url, {
     method: 'GET',
-    credentials: 'include',
   })
     .then(response => {
       if (!response.ok) {
