@@ -17,7 +17,7 @@ app.use(
     origin: "https://transaction-dash-front.vercel.app", // Replace with your frontend URL
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"], // Allowed HTTP methods
-    credentials: true, // If using cookies or authorization headers
+    
   })
 );
 
