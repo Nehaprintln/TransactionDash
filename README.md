@@ -28,3 +28,7 @@ CORS: For managing cross-origin requests.
 
 1. **Clone the repository**:
 2. **Create .env file is required to run the project**:
+
+##Image
+
+![image](https://github.com/user-attachments/assets/2c1a08b9-5a6f-4eb8-80d8-66ed908bbc3c)
