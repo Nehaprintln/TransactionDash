@@ -2,11 +2,7 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect('mongodb+srv://ray93gupta:4xJAELEtc1n1KKtz@personalcluster0.myfou.mongodb.net/TransactionsBoard?retryWrites=true&w=majority&appName=PersonalCluster0', {
-        // process.env.MONGO_URI
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const conn = await mongoose.connect(process.env.MONGO_URI);
     console.log('MongoDB Connected');
   } catch (error) {
     console.log('Error: MongoDB Connected Failed');
