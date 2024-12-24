@@ -3,12 +3,9 @@ import { getStatistics } from "../api";
 
 export default function StatisticsBox({ selectedMonth }) {
     const [statistics, setStatistics] = useState({});
-    console.log("static data");
   useEffect(() => {
     const fetchStatistics = async () => {
       const data  = await getStatistics(selectedMonth);
-      console.log("data=>",data);
-      setStatistics(data);
     };
 
     fetchStatistics();
@@ -18,9 +15,9 @@ export default function StatisticsBox({ selectedMonth }) {
     <h3>Statistics - {selectedMonth}</h3>
     {statistics ? (
       <ul>
-        <li>Total Sale: ${statistics.totalSale}</li>
-        <li>Total Sold Items: {statistics.totalSoldItems}</li>
-        <li>Total Not Sold Items: {statistics.totalNotSoldItems}</li>
+        <li><div className="label">Total Sale:</div><div className="value">{statistics.totalSale}</div> </li>
+        <li><div className="label">Total Sold Items:</div> <div className="value">{statistics.totalSoldItems}</div></li>
+        <li><div className="label">Total Not Sold Items:</div><div className="value">{statistics.totalNotSoldItems}</div> </li>
       </ul>
     ) : (
       <p>Loading...</p>

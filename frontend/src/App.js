@@ -12,12 +12,16 @@ function App() {
   return (
     <div className="App">
     <h1>Transaction Dashboard</h1>
-    <Dropdown
-      months={MONTHS}
-      selectedMonth={selectedMonth}
-      onChange={setSelectedMonth}
-    />
-    <StatisticsBox selectedMonth={selectedMonth} />
+    <div className="dropdown-container">
+      <Dropdown 
+        months={MONTHS}
+        selectedMonth={selectedMonth}
+        onChange={setSelectedMonth}
+      />
+    </div>
+    <div className="statistics-box">
+       <StatisticsBox selectedMonth={selectedMonth} />
+    </div>
     <BarChartComponent selectedMonth={selectedMonth} />
     <TransactionsTable selectedMonth={selectedMonth} />
   </div>

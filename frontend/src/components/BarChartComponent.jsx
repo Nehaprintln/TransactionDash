@@ -8,7 +8,6 @@ export default function BarChartComponent({ selectedMonth }) {
   useEffect(() => {
     const fetchBarChartData = async () => {
       const  data  = await getBarChartData(selectedMonth) || {};
-      console.log(data)
 
       if (data && data.ranges) {
         const rangeLabels = [
@@ -16,10 +15,9 @@ export default function BarChartComponent({ selectedMonth }) {
           "501-600", "601-700", "701-800", "801-900", "900+"
         ];
 
-        // Map the ranges to have a name and count
         setBarData(
           data.ranges.map((count, index) => ({
-            name: rangeLabels[index],  // Assign the correct label for each range
+            name: rangeLabels[index],  
             count: count,
           }))
         );
@@ -31,10 +29,14 @@ export default function BarChartComponent({ selectedMonth }) {
   }, [selectedMonth]);
 
   return (
-     <BarChart width={600} height={300} data={barData}>
+     <BarChart width={800} height={250} data={barData}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
-      <YAxis />
+      <YAxis 
+      domain={['auto', 'auto']} 
+      tickFormatter={(value) => `${value}`} 
+      ticks={[0, 2, 4, 6, 8, 10]} 
+      />
       <Tooltip />
       <Bar dataKey="count" fill="#8884d8" />
     </BarChart>

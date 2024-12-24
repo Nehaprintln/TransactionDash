@@ -5,7 +5,6 @@ const getBarChartData = async (req, res) => {
     const { month } = req.query;
   
    const monthIndex = new Date(Date.parse(`${month} 1`)).getMonth() + 1;
-    console.log("input11", monthIndex)
     const transactions = await Transaction.find({
       $expr: { $eq: [{ $month: "$dateOfSale" }, monthIndex] },
     });
@@ -25,7 +24,6 @@ const getBarChartData = async (req, res) => {
       else if (t.price <= 900) ranges[8]++;
       else ranges[9]++;
     });
-    console.log({ranges})
 
     res.status(200).json({ ranges });
   } catch (error) {

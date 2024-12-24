@@ -5,10 +5,10 @@ export default function TransactionsTable({ selectedMonth }) {
   const [transactions, setTransactions] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   const fetchTransactions = async () => {
     const  data  = await getTransactions(selectedMonth, search, page, 10);
-    console.log(data)
     setTransactions(data);
   };
 
@@ -17,12 +17,7 @@ export default function TransactionsTable({ selectedMonth }) {
   }, [selectedMonth, search, page]);
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search transactions..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      {/* <inputtype="text" placeholder="Search transactions..." value={search}// onChange={(e) => setSearch(e.target.value)}/> */}
       <table>
         <thead>
           <tr>
@@ -49,10 +44,10 @@ export default function TransactionsTable({ selectedMonth }) {
           ))}
         </tbody>
       </table>
-      <button disabled={page === 1} onClick={() => setPage(page - 1)}>
+      <button className="btn" disabled={page === 1} onClick={() => setPage(page - 1)}>
         Previous
       </button>
-      <button onClick={() => setPage(page + 1)}>Next</button>
+      <button className="btn" disabled={page >= totalPages} onClick={() => setPage(page + 1)}>Next</button>
     </div>
   )
 }

@@ -6,7 +6,6 @@ const seedDatabase = async () => {
     console.log("Start.. seedData")
     const response = await fetch("https://s3.amazonaws.com/roxiler.com/product_transaction.json");
     
-    // Check if the response is OK
     if (!response.ok) {
       throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
