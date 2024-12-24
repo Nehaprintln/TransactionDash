@@ -3,9 +3,11 @@ import { getStatistics } from "../api";
 
 export default function StatisticsBox({ selectedMonth }) {
     const [statistics, setStatistics] = useState({});
+    
   useEffect(() => {
     const fetchStatistics = async () => {
       const data  = await getStatistics(selectedMonth);
+      setStatistics(data);
     };
 
     fetchStatistics();

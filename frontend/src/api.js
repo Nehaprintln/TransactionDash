@@ -1,6 +1,8 @@
-const API_BASE_URL = "https://transaction-dash.vercel.app/api";
+// const API_BASE_URL = "https://transaction-dash.vercel.app/api";
+const API_BASE_URL = "http://localhost:5000/api";
+
 // api/transactions
-//http://localhost:5000/api
+
 
 export const getTransactions = async (month, search, page, perPage) => {
   try {
