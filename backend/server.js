@@ -5,12 +5,23 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const seedDatabase = require("./seed/seedData");
 const trRouters = require("./routes/transactionRoutes");
+
 const app = express();
 
+// Connect to the database
 connectDB();
 
-app.use(cors());
+// Allow requests from specific origin
+app.use(
+  cors({
+    origin: "*", //  frontend URL
+    methods: ["GET", "PATCH"],
+    // credentials: true // Enable this if you need cookies or authentication
+  })
+);
+
 app.use(bodyParser.json());
+
 
 app.get("/api/initialize", async (req, res) => {
   await seedDatabase();
@@ -18,8 +29,9 @@ app.get("/api/initialize", async (req, res) => {
 });
 
 
+
 // Routes
 app.use("/api", trRouters);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Export the app for Vercel's serverless function
+module.exports = app;
